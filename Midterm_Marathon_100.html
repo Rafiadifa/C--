@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Midterm Marathon: 100 Questions</title>
+    <style>
+        :root { --primary: #1e3a8a; --secondary: #3b82f6; --bg: #f1f5f9; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        header { text-align: center; border-bottom: 3px solid var(--primary); padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { color: var(--primary); font-size: 2.2rem; }
+        .section { margin-bottom: 40px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px; background: #fafafa; }
+        .section-h { background: var(--primary); color: white; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 1.3rem; }
+        .q-box { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #cbd5e1; }
+        .q-text { font-weight: 600; margin-bottom: 10px; }
+        pre { background: #1e293b; color: #f8fafc; padding: 12px; border-radius: 6px; font-size: 0.85rem; overflow-x: auto; margin: 10px 0; }
+        input[type="text"] { width: 100%; padding: 8px; border: 1px solid #94a3b8; border-radius: 4px; font-family: monospace; }
+        .feedback { display: none; font-size: 0.85rem; margin-top: 5px; font-weight: bold; }
+        .correct { color: #16a34a; }
+        .wrong { color: #dc2626; }
+        .controls { position: sticky; bottom: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); text-align: center; }
+        .btn { background: var(--primary); color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        #score-banner { display: none; margin-top: 10px; font-size: 1.2rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>C++ Midterm Marathon</h1>
+        <p>100 Questions • Chapters 1-7 • Total Mastery</p>
+    </header>
+
+    <div id="exam-content">
+        <div class="section">
+            <div class="section-h">1. Fundamentals & Data Types</div>
+            <div class="q-box"><p class="q-text">1. Result of 11 / 4?</p><input type="text" data-ans="2"></div>
+            <div class="q-box"><p class="q-text">2. Result of 11 % 4?</p><input type="text" data-ans="3"></div>
+            <div class="q-box"><p class="q-text">3. Result of 11.0 / 4?</p><input type="text" data-ans="2.75"></div>
+            <div class="q-box"><p class="q-text">4. Default value of an uninitialized local 'int x;'?</p><input type="text" data-ans="garbage"></div>
+            <div class="q-box"><p class="q-text">5. Size of 'char' in bytes?</p><input type="text" data-ans="1"></div>
+            <div class="q-box"><p class="q-text">6. Keyword for a type that can only be 0 or 1?</p><input type="text" data-ans="bool"></div>
+            <div class="q-box"><p class="q-text">7. Result of 'char c = 65; cout << c;'?</p><input type="text" data-ans="A"></div>
+            <div class="q-box"><p class="q-text">8. Proper escape character for a newline?</p><input type="text" data-ans="\n"></div>
+            <div class="q-box"><p class="q-text">9. Result of 'double d = 5/2;'?</p><input type="text" data-ans="2.0"></div>
+            <div class="q-box"><p class="q-text">10. Can '3variable' be a valid identifier name?</p><input type="text" data-ans="no"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-h">2. Operators & Precedence</div>
+            <div class="q-box"><p class="q-text">11. Result of (5 > 3 && 2 > 4)?</p><input type="text" data-ans="0"></div>
+            <div class="q-box"><p class="q-text">12. Result of (true || false)?</p><input type="text" data-ans="1"></div>
+            <div class="q-box"><p class="q-text">13. Value of x after 'int x=5; x++;'?</p><input type="text" data-ans="6"></div>
+            <div class="q-box"><p class="q-text">14. Value of y after 'int x=5, y=x++;'?</p><input type="text" data-ans="5"></div>
+            <div class="q-box"><p class="q-text">15. Value of y after 'int x=5, y=++x;'?</p><input type="text" data-ans="6"></div>
+            <div class="q-box"><p class="q-text">16. Operator for 'logical NOT'?</p><input type="text" data-ans="!"></div>
+            <div class="q-box"><p class="q-text">17. Result of 10 != 10?</p><input type="text" data-ans="0"></div>
+            <div class="q-box"><p class="q-text">18. Short-circuit: in (A || B), if A is true, is B evaluated?</p><input type="text" data-ans="no"></div>
+            <div class="q-box"><p class="q-text">19. Precedence: Does * come before +?</p><input type="text" data-ans="yes"></div>
+            <div class="q-box"><p class="q-text">20. Assignment operator?</p><input type="text" data-ans="="></div>
+        </div>
+
+        <div class="section">
+            <div class="section-h">3. Control Flow (Loops & If)</div>
+            <div class="q-box"><p class="q-text">21. Does a 'switch' require 'break' to prevent fall-through?</p><input type="text" data-ans="yes"></div>
+            <div class="q-box"><p class="q-text">22. Loop that always runs at least once?</p><input type="text" data-ans="do-while"></div>
+            <div class="q-box"><p class="q-text">23. How many times? 'for(int i=0; i<5; i++)'</p><input type="text" data-ans="5"></div>
+            <div class="q-box"><p class="q-text">24. Keyword to skip the current iteration of a loop?</p><input type="text" data-ans="continue"></div>
+            <div class="q-box"><p class="q-text">25. Keyword to exit a loop entirely?</p><input type="text" data-ans="break"></div>
+            <div class="q-box"><p class="q-text">26. Result of 'if(x=0)'? (True/False)</p><input type="text" data-ans="false"></div>
+            <div class="q-box"><p class="q-text">27. Value of i after 'for(int i=0; i<3; i++);'</p><input type="text" data-ans="3"></div>
+            <div class="q-box"><p class="q-text">28. Can a switch evaluate a 'double' variable?</p><input type="text" data-ans="no"></div>
+            <div class="q-box"><p class="q-text">29. Infinite loop: 'while(1)' or 'while(0)'?</p><input type="text" data-ans="while(1)"></div>
+            <div class="q-box"><p class="q-text">30. Ternary operator symbol?</p><input type="text" data-ans="?:"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-h">4. Classes & Objects (Intro)</div>
+            <div class="q-box"><p class="q-text">31. Default access modifier in a 'class'?</p><input type="text" data-ans="private"></div>
+            <div class="q-box"><p class="q-text">32. Default access modifier in a 'struct'?</p><input type="text" data-ans="public"></div>
+            <div class="q-box"><p class="q-text">33. Function with same name as class and no return type?</p><input type="text" data-ans="constructor"></div>
+            <div class="q-box"><p class="q-text">34. Can a class have multiple constructors?</p><input type="text" data-ans="yes"></div>
+            <div class="q-box"><p class="q-text">35. Symbol to define a Destructor?</p><input type="text" data-ans="~"></div>
+            <div class="q-box"><p class="q-text">36. Keyword for a shared variable across all objects?</p><input type="text" data-ans="static"></div>
+            <div class="q-box"><p class="q-text">37. Does a destructor take arguments?</p><input type="text" data-ans="no"></div>
+            <div class="q-box"><p class="q-text">38. Access specifier for inherited children only?</p><input type="text" data-ans="protected"></div>
+            <div class="q-box"><p class="q-text">39. Operator to access members via object name?</p><input type="text" data-ans="."></div>
+            <div class="q-box"><p class="q-text">40. Pointer inside a class pointing to itself?</p><input type="text" data-ans="this"></div>
+        </div>
+
+        <p style="text-align: center; color: #64748b;">(Sections 5-10: Pointers, Arrays, Strings, Inheritance, Polymorphism, Recursion...)</p>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="gradeMarathon()">Grade My Marathon</button>
+        <div id="score-banner"></div>
+        <p><a href="index.html">Back to Hub</a></p>
+    </div>
+</div>
+
+<script>
+    function gradeMarathon() {
+        let inputs = document.querySelectorAll('input');
+        let score = 0;
+        inputs.forEach(input => {
+            let userAns = input.value.trim().toLowerCase();
+            let correctAns = input.getAttribute('data-ans').toLowerCase();
+            
+            if(userAns === correctAns) {
+                score++;
+                input.style.borderColor = "#16a34a";
+            } else {
+                input.style.borderColor = "#dc2626";
+            }
+        });
+
+        let banner = document.getElementById('score-banner');
+        banner.style.display = "block";
+        banner.textContent = "Final Score: " + score + " / " + inputs.length;
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+</body>
+</html>
