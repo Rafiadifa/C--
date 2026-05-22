@@ -7,84 +7,72 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; color: #1f2937; }
-        .container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 40px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 40px; }
         header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #f3f4f6; padding-bottom: 20px; }
         h1 { color: #4c1d95; font-size: 2.5em; }
+        h2 { color: #2d3748; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 10px; }
         
-        /* Subject Section Styles */
-        .subject-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #f3f4f6; }
-        .subject-section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+        /* Design Thinking Section Heading Accent */
+        .dt-heading { border-left-color: #10b981; }
         
-        .subject-title { font-size: 1.8em; color: #1e1b4b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        h2 { color: #4b5563; margin-top: 20px; margin-bottom: 15px; font-size: 1.2em; border-left: 4px solid #667eea; padding-left: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px; }
         .card { display: block; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; text-decoration: none; color: #374151; font-weight: 600; transition: all 0.2s ease; }
         .card:hover { background: #eff6ff; border-color: #667eea; transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); color: #4c1d95; }
         .card span { display: block; font-size: 0.85em; color: #6b7280; font-weight: normal; margin-top: 5px; }
+        .new-badge { background: #ef4444; color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 5px; }
         
-        /* Badges */
-        .badge { color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 5px; font-weight: bold; }
-        .new-badge { background: #ef4444; }
-        .tech-badge { background: #10b981; }
-        .design-badge { background: #f59e0b; }
+        /* Custom Styling for the Single Design Thinking Showcase Card */
+        .featured-dt-card { 
+            background: #f0fdf4; 
+            border: 1px solid #bbf7d0; 
+            border-left: 5px solid #10b981; 
+        }
+        .featured-dt-card:hover { 
+            background: #dcfce7; 
+            border-color: #10b981; 
+            color: #065f46; 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(16, 185, 129, 0.15);
+        }
+        .featured-dt-card span { color: #166534; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Tsinghua Academic Hub</h1>
-        <p>Interactive Coursework Review, Project Spaces & Milestone Tracking</p>
+        <h1>Personal Study Hub</h1>
+        <p>Interactive Review Notes, Practice & Project Space</p>
     </header>
 
-    <div class="subject-section">
-        <div class="subject-title">💻 C++ Programming</div>
-        
-        <h2>🎮 Interactive Exercises</h2>
-        <div class="grid">
-            <a href="Chapter1_Exercises_Interactive.html" class="card">Chapter 1 Exercises <span>Basic Types & Math</span></a>
-            <a href="Chapter2_Exercises_Interactive.html" class="card">Chapter 2 Exercises <span>Control Flow Logic</span></a>
-            <a href="Pointers_Memory_Interactive.html" class="card">Pointers & Memory <span class="badge new-badge">NEW</span> <span>Addresses & Dereferencing</span></a>
-            <a href="Chapter_Inheritance_UML_Exercises_Interactive.html" class="card">Inheritance & UML <span>OOP Principles</span></a>
-            <a href="Midterm_Marathon_100.html" class="card" style="border: 2px solid #ef4444;"> 🔥 100-Question Marathon <span>The ultimate midterm survival test.</span></a>
-            <a href="Practice_Midterm.html" class="card"> Practice Midterm <span>20 Questions · 1 Hour Exam</span></a>
-            <a href="Hardmode.html" class="card"> Hardmode Exam <span>18 Questions · 75 Minutes</span></a>
-            <a href="code_fixing.html" class="card"> Code Fixing Challenge <span>18 Questions · 60 Minutes</span></a>
-        </div>
-
-        <h2>📚 Review Notes</h2>
-        <div class="grid">
-            <a href="Week2_Midterm_Review_EN.html" class="card">Week 2 <span>Data Types & Variables</span></a>
-            <a href="Week3_Midterm_Review_EN.html" class="card">Week 3 <span>Control Flow Mechanisms</span></a>
-            <a href="Week4_Midterm_Review_EN.html" class="card">Week 4 <span>Operators & Expressions</span></a>
-            <a href="Week5_Midterm_Review_EN.html" class="card">Week 5 <span>Classes & Object Structure</span></a>
-            <a href="Week6_Midterm_Review_EN.html" class="card">Week 6 <span>Object Lifetimes & Scope</span></a>
-            <a href="Week7_Midterm_Review_EN.html" class="card">Week 7 <span>Inheritance Hierarchies</span></a>
-        </div>
+    <h2>🎮 C++ Interactive Exercises</h2>
+    <div class="grid">
+        <a href="Chapter1_Exercises_Interactive.html" class="card">Chapter 1 Exercises <span>Basic Types & Math</span></a>
+        <a href="Chapter2_Exercises_Interactive.html" class="card">Chapter 2 Exercises <span>Control Flow Logic</span></a>
+        <a href="Pointers_Memory_Interactive.html" class="card">Pointers & Memory <span class="new-badge">NEW</span> <span>Addresses & Dereferencing</span></a>
+        <a href="Chapter_Inheritance_UML_Exercises_Interactive.html" class="card">Inheritance & UML <span>OOP Principles</span></a>
+        <a href="Midterm_Marathon_100.html" class="card" style="border: 2px solid #ef4444;"> 🔥 100-Question Marathon <span>The ultimate midterm survival test.</span></a>
+        <a href="Practice_Midterm.html" class="card"> Practice Midterm <span>20 Questions 1 Hour Exam</span></a>
+        <a href="Hardmode.html" class="card"> Hardmode Exam <span>18 Questions 75 minutes Exam</span></a>
+        <a href="code_fixing.html" class="card"> Code Fixing Exam <span>18 Questions 60 minutes Exam</span></a>
     </div>
 
-    <div class="subject-section">
-        <div class="subject-title">💡 Design Thinking: Smart-Flow Qingfen</div>
-        
-        <h2>📡 System Architecture & Logic</h2>
-        <div class="grid">
-            <a href="weight_sensor_logic.html" class="card">30kg Weight-Threshold System <span class="badge tech-badge">CORE</span><span>Pressure node logic & automated beep warning loops</span></a>
-            <a href="canteen_navigation_ui.html" class="card">Live Map Dashboard Mockup <span>Real-time occupancy UI navigation layout</span></a>
-        </div>
+    <h2>📚 C++ Review Notes</h2>
+    <div class="grid">
+        <a href="Week2_Midterm_Review_EN.html" class="card">Week 2 <span>Data Types</span></a>
+        <a href="Week3_Midterm_Review_EN.html" class="card">Week 3 <span>Control Flow</span></a>
+        <a href="Week4_Midterm_Review_EN.html" class="card">Week 4 <span>Operators</span></a>
+        <a href="Week5_Midterm_Review_EN.html" class="card">Week 5 <span>Classes & Objects</span></a>
+        <a href="Week6_Midterm_Review_EN.html" class="card">Week 6 <span>Lifetimes</span></a>
+        <a href="Week7_Midterm_Review_EN.html" class="card">Week 7 <span>Inheritance</span></a>
+    </div>
 
-        <h2>📦 Project Management & Milestones</h2>
-        <div class="grid">
-            <a href="DHS-3_Milestone 1-PPT.pdf" class="card">Milestone 1 Archive <span>Problem Framing & "Bag-on-Seat" Insights</span></a>
-            <a href="DHS-2_Milestone 2-PPT.pdf" class="card">Milestone 2 Archive <span>Concept Generation & Behavioral Analysis</span></a>
-            <a href="ta_consultations.html" class="card">Week 13 TA Feedback Log <span>System logic updates & edge-case solutions</span></a>
-        </div>
-
-        <h2>🎨 Exhibition & Prototyping Assets</h2>
-        <div class="grid">
-            <a href="spatial_model_blueprint.html" class="card">1:10 Spatial Model Blueprint <span class="badge design-badge">EXHIBITION</span><span>Cardboard module construction & physical placement specifications</span></a>
-            <a href="user_testing_feedback.html" class="card">User Test Matrix (Week 14) <span>Data points regarding audio-cue thresholds & social dynamics</span></a>
-        </div>
+    <h2 class="dt-heading">💡 Design Thinking Hub</h2>
+    <div class="grid" style="grid-template-columns: 1fr;">
+        <a href="design_thinking.html" class="card featured-dt-card">
+            🚀 Smart Canteen Seating Optimization Project
+            <span>Human-centered spatial redesign, user behavior logic, weight-aware sensor flows, and 1:10 scaling documentation.</span>
+        </a>
     </div>
 </div>
 
