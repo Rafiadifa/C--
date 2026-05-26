@@ -1,94 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafi's Study Hub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0f0f11;--bg2:#16161a;--bg3:#1e1e24;
-    --border:#2a2a33;--text:#e8e8f0;--text2:#8888a0;--text3:#55556a;
-    --cpp:#4ade80;--calc:#60a5fa;--la:#f472b6;--dt:#fb923c;--mgmt:#a78bfa;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:80px;}
-
-  .topbar{border-bottom:1px solid var(--border);padding:20px 48px;display:flex;align-items:baseline;gap:16px;position:sticky;top:0;background:rgba(15,15,17,0.92);backdrop-filter:blur(12px);z-index:10;}
-  .topbar-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--text);letter-spacing:-0.01em;}
-  .topbar-sub{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);letter-spacing:0.05em;}
-  .topbar-date{margin-left:auto;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);}
-
-  .hero{padding:64px 48px 48px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(96,165,250,0.06) 0%,transparent 70%);pointer-events:none;}
-  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.03em;color:var(--text);max-width:680px;}
-  .hero h1 em{font-style:italic;color:var(--text2);}
-  .hero-meta{margin-top:16px;font-size:0.88rem;color:var(--text2);font-weight:300;max-width:500px;line-height:1.6;}
-  .exam-pills{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;}
-  .pill{font-family:'DM Mono',monospace;font-size:0.72rem;padding:5px 12px;border-radius:99px;border:1px solid;letter-spacing:0.03em;}
-  .pill-cpp {color:var(--cpp); border-color:rgba(74,222,128,0.3);  background:rgba(74,222,128,0.07);}
-  .pill-calc{color:var(--calc);border-color:rgba(96,165,250,0.3);  background:rgba(96,165,250,0.07);}
-  .pill-la  {color:var(--la);  border-color:rgba(244,114,182,0.3); background:rgba(244,114,182,0.07);}
-
-  .main{max-width:1100px;margin:0 auto;padding:0 48px;}
-
-  .subject-block{padding:48px 0;border-bottom:1px solid var(--border);animation:fadeUp 0.4s ease both;}
-  .subject-block:nth-child(1){animation-delay:0.05s;}
-  .subject-block:nth-child(2){animation-delay:0.10s;}
-  .subject-block:nth-child(3){animation-delay:0.15s;}
-  .subject-block:nth-child(4){animation-delay:0.20s;}
-  .subject-block:last-child{border-bottom:none;}
-
-  .subject-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:36px;}
-  .subject-dot{width:10px;height:10px;border-radius:50%;margin-top:8px;flex-shrink:0;}
-  .subject-label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
-  .subject-title{font-family:'DM Serif Display',serif;font-size:1.6rem;letter-spacing:-0.02em;line-height:1.2;}
-  .subject-exam-date{margin-left:auto;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);text-align:right;line-height:1.8;flex-shrink:0;}
-  .subject-exam-date strong{display:block;font-weight:500;color:var(--text2);}
-
-  .subsection-wrap{margin-bottom:28px;}
-  .subsection-label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;padding-left:2px;}
-
-  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
-
-  .card{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;color:var(--text2);font-size:0.88rem;font-weight:500;transition:background 0.15s,border-color 0.15s,color 0.15s,transform 0.15s;line-height:1.4;}
-  .card:hover{background:var(--bg3);transform:translateY(-2px);color:var(--text);}
-  .card-sub{display:block;font-size:0.75rem;font-weight:400;color:var(--text3);margin-top:4px;}
-  .card-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.62rem;padding:2px 6px;border-radius:4px;border:1px solid;vertical-align:middle;margin-left:6px;letter-spacing:0.04em;}
-  .badge-new{color:#fb7185;border-color:rgba(251,113,133,0.35);background:rgba(251,113,133,0.08);}
-
-  .acc-cpp {border-left:3px solid var(--cpp);}
-  .acc-calc{border-left:3px solid var(--calc);}
-  .acc-la  {border-left:3px solid var(--la);}
-  .acc-dt  {border-left:3px solid var(--dt);}
-  .acc-mgmt{border-left:3px solid var(--mgmt);}
-  .acc-cpp:hover {border-color:rgba(74,222,128,0.4);}
-  .acc-calc:hover{border-color:rgba(96,165,250,0.4);}
-  .acc-la:hover  {border-color:rgba(244,114,182,0.4);}
-  .acc-dt:hover  {border-color:rgba(251,146,60,0.4);}
-  .acc-mgmt:hover{border-color:rgba(167,139,250,0.4);}
-
-  .card-wide{grid-column:1/-1;}
-  .card-hot{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);}
-  .card-hot:hover{border-color:rgba(239,68,68,0.45);background:rgba(239,68,68,0.1);}
-
-  .dot-cpp {background:var(--cpp);}
-  .dot-calc{background:var(--calc);}
-  .dot-la  {background:var(--la);}
-  .dot-dt  {background:var(--dt);}
-
-  .footer-note{padding:32px 48px;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text3);letter-spacing:0.04em;}
-
-  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-
-  @media(max-width:600px){
-    .topbar,.hero,.main,.footer-note{padding-left:20px;padding-right:20px;}
-    .hero h1{font-size:2rem;}
-    .card-grid{grid-template-columns:1fr;}
-    .subject-exam-date{display:none;}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafi's Study Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -170,7 +86,7 @@
           <span class="card-sub">Jun 5 Fri &middot; P5</span>
         </a>
         <a href="placeholder.html" class="card acc-cpp">
-          Inheritance — Shape→Circle
+          Inheritance — Shape&rarr;Circle
           <span class="card-sub">Jun 6 Sat &middot; P3</span>
         </a>
         <a href="placeholder.html" class="card acc-cpp">
@@ -237,7 +153,6 @@
     <div class="subsection-wrap">
       <div class="subsection-label">Daily Practice</div>
       <div class="card-grid">
-        <!-- Week 1 -->
         <a href="placeholder.html" class="card acc-calc">
           Partial Derivatives Drill
           <span class="card-sub">May 26 Mon &middot; P4 &middot; Ch. 12.1–12.2</span>
@@ -254,7 +169,6 @@
           Newton's Method Self-Study
           <span class="card-sub">May 30 Sat &middot; P1 &middot; Ch. 13.4 &middot; 1.5h</span>
         </a>
-        <!-- Week 2 -->
         <a href="placeholder.html" class="card acc-calc">
           Vector Fields &amp; Derivatives
           <span class="card-sub">Jun 1 Mon &middot; P5 &middot; Ch. 13.7</span>
@@ -271,7 +185,6 @@
           Implicit Function Theorem
           <span class="card-sub">Jun 7 Sun &middot; P4 &middot; Ch. 13.6</span>
         </a>
-        <!-- Week 3 -->
         <a href="placeholder.html" class="card acc-calc">
           Fubini Theorem Drill
           <span class="card-sub">Jun 8 Mon &middot; P4 &middot; Ch. 14.3–14.4</span>
@@ -296,7 +209,6 @@
           Integration Full Drill — 15 Problems
           <span class="card-sub">Jun 13 Sat &middot; P4</span>
         </a>
-        <!-- Week 4 -->
         <a href="placeholder.html" class="card acc-calc">
           Full Derivatives Review
           <span class="card-sub">Jun 15 Mon &middot; P2 &middot; all rules</span>
@@ -381,7 +293,6 @@
     <div class="subsection-wrap">
       <div class="subsection-label">Daily Practice</div>
       <div class="card-grid">
-        <!-- Week 1 -->
         <a href="placeholder.html" class="card acc-la">
           Basis — 5 New Problems
           <span class="card-sub">May 25 Mon &middot; P5 &middot; EZ Ch. 5.3</span>
@@ -410,14 +321,9 @@
           Change of Basis &amp; Coord Map
           <span class="card-sub">May 31 Sun &middot; P2 &middot; EZ Ch. 5.4</span>
         </a>
-        <!-- Week 2 -->
         <a href="placeholder.html" class="card acc-la">
           LU Decomposition
           <span class="card-sub">Jun 1 Mon &middot; P4 &middot; 5 matrices drill</span>
-        </a>
-        <a href="placeholder.html" class="card acc-la">
-          Inner Product Space
-          <span class="card-sub">Jun 6 Sat &middot; P1 &middot; EZ Ch. 6.1–6.2</span>
         </a>
         <a href="placeholder.html" class="card acc-la">
           Rank-Nullity Prove from Scratch
@@ -428,10 +334,13 @@
           <span class="card-sub">Jun 5 Fri &middot; P4 &middot; explain aloud</span>
         </a>
         <a href="placeholder.html" class="card acc-la">
+          Inner Product Space
+          <span class="card-sub">Jun 6 Sat &middot; P1 &middot; EZ Ch. 6.1–6.2</span>
+        </a>
+        <a href="placeholder.html" class="card acc-la">
           Rank-Nullity Prove from Scratch
           <span class="card-sub">Jun 7 Sun &middot; P2</span>
         </a>
-        <!-- Week 3 -->
         <a href="placeholder.html" class="card acc-la">
           Orthogonality &amp; Gram-Schmidt
           <span class="card-sub">Jun 8 Mon &middot; P5</span>
@@ -468,7 +377,6 @@
           Diagonalization
           <span class="card-sub">Jun 14 Sun &middot; P2</span>
         </a>
-        <!-- Week 4 -->
         <a href="placeholder.html" class="card acc-la">
           Key Theorems Reconstruct Cold
           <span class="card-sub">Jun 15 Mon &middot; P4</span>
@@ -569,12 +477,14 @@
 <div class="footer-note">RAFI ADIFA MAULANA &middot; STUDY HUB &middot; 2026</div>
 
 <script>
-  function updateClock(){
-    const d=new Date(),days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    const h=d.getHours().toString().padStart(2,'0'),m=d.getMinutes().toString().padStart(2,'0');
-    document.getElementById('clock').textContent=days[d.getDay()]+' '+h+':'+m;
+  function updateClock() {
+    const d = new Date(), days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const h = d.getHours().toString().padStart(2,'0');
+    const m = d.getMinutes().toString().padStart(2,'0');
+    document.getElementById('clock').textContent = days[d.getDay()] + ' ' + h + ':' + m;
   }
-  updateClock();setInterval(updateClock,10000);
+  updateClock();
+  setInterval(updateClock, 10000);
 </script>
 </body>
 </html>
